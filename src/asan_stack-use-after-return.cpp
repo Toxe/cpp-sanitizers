@@ -1,4 +1,4 @@
-// need to run with ASAN_OPTIONS=detect_stack_use_after_return=1
+// need to run with ASAN_OPTIONS=detect_stack_use_after_return=true
 
 int* return_pointer_to_stack_value()
 {

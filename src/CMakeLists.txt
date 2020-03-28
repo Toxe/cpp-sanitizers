@@ -3,6 +3,7 @@ set(ALL_TARGETS
     asan_heap-buffer-overflow
     asan_heap-use-after-free
     asan_stack-buffer-overflow
+    asan_stack-use-after-return
 )
 
 foreach(target ${ALL_TARGETS})

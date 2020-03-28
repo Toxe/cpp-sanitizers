@@ -2,10 +2,12 @@ set(ALL_TARGETS
     asan_global-buffer-overflow
     asan_heap-buffer-overflow
     asan_heap-use-after-free
-    asan_initialization-order-fiasco
     asan_stack-buffer-overflow
     asan_stack-use-after-return
     asan_stack-use-after-scope
+    asan_memory-leak_malloc
+    asan_memory-leak_new
+    asan_initialization-order-fiasco
 )
 
 add_executable(asan_global-buffer-overflow asan_global-buffer-overflow.cpp)
@@ -14,6 +16,8 @@ add_executable(asan_heap-use-after-free asan_heap-use-after-free.cpp)
 add_executable(asan_stack-buffer-overflow asan_stack-buffer-overflow.cpp)
 add_executable(asan_stack-use-after-return asan_stack-use-after-return.cpp)
 add_executable(asan_stack-use-after-scope asan_stack-use-after-scope.cpp)
+add_executable(asan_memory-leak_malloc asan_memory-leak_malloc.cpp)
+add_executable(asan_memory-leak_new asan_memory-leak_new.cpp)
 add_executable(asan_initialization-order-fiasco asan_initialization-order-fiasco.cpp
                                                 asan_initialization-order-fiasco_helper.cpp)
 
@@ -25,4 +29,5 @@ foreach(target ${ALL_TARGETS})
 
     # disable some (useful) warnings that, in this case, are a bit annoying for example programs
     target_compile_options(${target} PRIVATE -Wno-unused-parameter)
+    target_compile_options(${target} PRIVATE -Wno-unused-variable)
 endforeach()

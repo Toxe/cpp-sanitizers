@@ -4,6 +4,7 @@ set(ALL_TARGETS
     asan_heap-use-after-free
     asan_stack-buffer-overflow
     asan_stack-use-after-return
+    asan_stack-use-after-scope
 )
 
 foreach(target ${ALL_TARGETS})

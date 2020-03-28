@@ -2,13 +2,22 @@ set(ALL_TARGETS
     asan_global-buffer-overflow
     asan_heap-buffer-overflow
     asan_heap-use-after-free
+    asan_initialization-order-fiasco
     asan_stack-buffer-overflow
     asan_stack-use-after-return
     asan_stack-use-after-scope
 )
 
+add_executable(asan_global-buffer-overflow asan_global-buffer-overflow.cpp)
+add_executable(asan_heap-buffer-overflow asan_heap-buffer-overflow.cpp)
+add_executable(asan_heap-use-after-free asan_heap-use-after-free.cpp)
+add_executable(asan_stack-buffer-overflow asan_stack-buffer-overflow.cpp)
+add_executable(asan_stack-use-after-return asan_stack-use-after-return.cpp)
+add_executable(asan_stack-use-after-scope asan_stack-use-after-scope.cpp)
+add_executable(asan_initialization-order-fiasco asan_initialization-order-fiasco.cpp
+                                                asan_initialization-order-fiasco_helper.cpp)
+
 foreach(target ${ALL_TARGETS})
-    add_executable(${target} ${target}.cpp)
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)
     target_compile_features(${target} PUBLIC cxx_std_17)
     target_compile_options(${target} PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS_AND_WARNINGS})
@@ -17,9 +26,3 @@ foreach(target ${ALL_TARGETS})
     # disable some (useful) warnings that, in this case, are a bit annoying for example programs
     target_compile_options(${target} PRIVATE -Wno-unused-parameter)
 endforeach()
-
-add_executable(asan_initialization-order-fiasco asan_initialization-order-fiasco.cpp asan_initialization-order-fiasco_helper.cpp)
-set_target_properties(asan_initialization-order-fiasco PROPERTIES CXX_EXTENSIONS OFF)
-target_compile_features(asan_initialization-order-fiasco PUBLIC cxx_std_17)
-target_compile_options(asan_initialization-order-fiasco PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS_AND_WARNINGS})
-target_link_libraries(asan_initialization-order-fiasco PRIVATE ${SANITIZER_FLAGS})

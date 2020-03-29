@@ -8,8 +8,8 @@ set(ALL_TARGETS
     asan_memory-leak_malloc
     asan_memory-leak_new
     asan_initialization-order-fiasco
-    leak_memory-leak_malloc
-    leak_memory-leak_new
+    lsan_memory-leak_malloc
+    lsan_memory-leak_new
 )
 
 add_executable(asan_global-buffer-overflow asan_global-buffer-overflow.cpp)
@@ -22,8 +22,8 @@ add_executable(asan_memory-leak_malloc asan_memory-leak_malloc.cpp)
 add_executable(asan_memory-leak_new asan_memory-leak_new.cpp)
 add_executable(asan_initialization-order-fiasco asan_initialization-order-fiasco.cpp
                                                 asan_initialization-order-fiasco_helper.cpp)
-add_executable(leak_memory-leak_malloc leak_memory-leak_malloc.cpp)
-add_executable(leak_memory-leak_new leak_memory-leak_new.cpp)
+add_executable(lsan_memory-leak_malloc lsan_memory-leak_malloc.cpp)
+add_executable(lsan_memory-leak_new lsan_memory-leak_new.cpp)
 
 foreach(target ${ALL_TARGETS})
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)

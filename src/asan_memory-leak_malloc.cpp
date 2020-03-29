@@ -1,6 +1,6 @@
 // on macOS need to run with ASAN_OPTIONS=detect_leaks=true
 
-#include <stdlib.h>
+#include <cstdlib>
 
 int main()
 {

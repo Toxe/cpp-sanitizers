@@ -72,3 +72,12 @@ Builds the project targets with `-fsanitize=undefined`.
 $ cmake -DUSE_SANITIZER=undefined [..]
 $ ninja
 ```
+
+#### Memory Sanitizer (`USE_SANITIZER=memory`)
+
+Builds the project targets with `-fsanitize=memory -fsanitize-memory-track-origins -fno-omit-frame-pointer -fPIE -pie`.
+
+```
+$ cmake -DUSE_SANITIZER=memory [..]
+$ ninja
+```

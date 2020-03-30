@@ -13,6 +13,7 @@ set(ALL_TARGETS
     tsan_data-race
     ubsan_bool
     ubsan_bounds
+    msan_use-of-uninitialized-value
 )
 
 add_executable(asan_global-buffer-overflow asan_global-buffer-overflow.cpp)
@@ -30,6 +31,7 @@ add_executable(lsan_memory-leak_new lsan_memory-leak_new.cpp)
 add_executable(tsan_data-race tsan_data-race.cpp)
 add_executable(ubsan_bool ubsan_bool.cpp)
 add_executable(ubsan_bounds ubsan_bounds.cpp)
+add_executable(msan_use-of-uninitialized-value msan_use-of-uninitialized-value.cpp)
 
 foreach(target ${ALL_TARGETS})
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)

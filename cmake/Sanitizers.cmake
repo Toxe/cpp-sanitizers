@@ -1,4 +1,4 @@
-option(USE_SANITIZER "Enable sanitizer. Options are: OFF, address, leak, thread, undefined" OFF)
+option(USE_SANITIZER "Enable sanitizer. Options are: OFF, address, leak, thread, undefined, memory" OFF)
 
 string(TOLOWER ${USE_SANITIZER} USE_SANITIZER)
 
@@ -10,6 +10,8 @@ elseif(USE_SANITIZER STREQUAL "thread")
     set(SANITIZER_FLAGS -fsanitize=thread)
 elseif(USE_SANITIZER STREQUAL "undefined")
     set(SANITIZER_FLAGS -fsanitize=undefined)
+elseif(USE_SANITIZER STREQUAL "memory")
+    set(SANITIZER_FLAGS -fsanitize=memory -fsanitize-memory-track-origins -fno-omit-frame-pointer -fPIE -pie)
 endif()
 
 if(SANITIZER_FLAGS)

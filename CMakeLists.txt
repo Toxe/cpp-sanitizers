@@ -12,4 +12,6 @@ include(cmake/Sanitizers.cmake)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
+find_package(Threads REQUIRED)
+
 add_subdirectory(src)

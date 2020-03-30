@@ -41,3 +41,5 @@ foreach(target ${ALL_TARGETS})
     target_compile_options(${target} PRIVATE -Wno-unused-parameter)
     target_compile_options(${target} PRIVATE -Wno-unused-variable)
 endforeach()
+
+target_link_libraries(tsan_data-race PRIVATE Threads::Threads)

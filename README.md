@@ -31,6 +31,7 @@ To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake. Possible values
 
 - `address`
 - `leak`
+- `thread`
 - `OFF` (default)
 
 Make sure to set `-DCMAKE_BUILD_TYPE=` to either `Debug` or `RelWithDebInfo` to include debug symbols or set `-g` compiler flag manually.
@@ -50,5 +51,14 @@ Builds the project targets with `-fsanitize=leak -fno-omit-frame-pointer`.
 
 ```
 $ cmake -DUSE_SANITIZER=leak [..]
+$ ninja
+```
+
+#### Thread Sanitizer (`USE_SANITIZER=thread`)
+
+Builds the project targets with `-fsanitize=thread -fno-omit-frame-pointer`.
+
+```
+$ cmake -DUSE_SANITIZER=thread [..]
 $ ninja
 ```

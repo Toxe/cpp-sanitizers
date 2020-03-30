@@ -11,6 +11,8 @@ set(ALL_TARGETS
     lsan_memory-leak_malloc
     lsan_memory-leak_new
     tsan_data-race
+    ubsan_bool
+    ubsan_bounds
 )
 
 add_executable(asan_global-buffer-overflow asan_global-buffer-overflow.cpp)
@@ -26,6 +28,8 @@ add_executable(asan_initialization-order-fiasco asan_initialization-order-fiasco
 add_executable(lsan_memory-leak_malloc lsan_memory-leak_malloc.cpp)
 add_executable(lsan_memory-leak_new lsan_memory-leak_new.cpp)
 add_executable(tsan_data-race tsan_data-race.cpp)
+add_executable(ubsan_bool ubsan_bool.cpp)
+add_executable(ubsan_bounds ubsan_bounds.cpp)
 
 foreach(target ${ALL_TARGETS})
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)

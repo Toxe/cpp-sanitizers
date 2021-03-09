@@ -33,6 +33,7 @@ To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake. Possible values
 - `leak`
 - `thread`
 - `undefined`
+- `memory`
 - `OFF` (default)
 
 Make sure to set `-DCMAKE_BUILD_TYPE=` to either `Debug` or `RelWithDebInfo` to include debug symbols or set `-g` compiler flag manually.

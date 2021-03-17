@@ -6,7 +6,7 @@
 $ mkdir build
 $ cd build
 $ cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_COMPILER=clang++ ..
-$ ninja
+$ cmake --build .
 ```
 
 ## Static Analysis
@@ -17,14 +17,14 @@ To use `clang-tidy` pass `USE_CLANG_TIDY=ON` to CMake.
 
 ```
 $ cmake -DUSE_CLANG_TIDY=ON [..]
-$ ninja
+$ cmake --build .
 ```
 
 If `clang-tidy` is installed under a different name pass that name or the full path with the `CMAKE_CXX_CLANG_TIDY` option like:
 
 ```
 $ cmake -DUSE_CLANG_TIDY=ON -DCMAKE_CXX_CLANG_TIDY=/opt/local/bin/clang-tidy-11 [..]
-$ ninja
+$ cmake --build .
 ```
 
 ## Sanitizers
@@ -46,7 +46,7 @@ Builds the project targets with `-fsanitize=address -fno-omit-frame-pointer`.
 
 ```
 $ cmake -DUSE_SANITIZER=address [..]
-$ ninja
+$ cmake --build .
 ```
 
 ### Leak Sanitizer (`USE_SANITIZER=leak`)
@@ -55,7 +55,7 @@ Builds the project targets with `-fsanitize=leak`.
 
 ```
 $ cmake -DUSE_SANITIZER=leak [..]
-$ ninja
+$ cmake --build .
 ```
 
 ### Thread Sanitizer (`USE_SANITIZER=thread`)
@@ -64,7 +64,7 @@ Builds the project targets with `-fsanitize=thread`.
 
 ```
 $ cmake -DUSE_SANITIZER=thread [..]
-$ ninja
+$ cmake --build .
 ```
 
 ### Undefined Behavior Sanitizer (`USE_SANITIZER=undefined`)
@@ -73,7 +73,7 @@ Builds the project targets with `-fsanitize=undefined`.
 
 ```
 $ cmake -DUSE_SANITIZER=undefined [..]
-$ ninja
+$ cmake --build .
 ```
 
 ### Memory Sanitizer (`USE_SANITIZER=memory`)
@@ -82,5 +82,5 @@ Builds the project targets with `-fsanitize=memory -fsanitize-memory-track-origi
 
 ```
 $ cmake -DUSE_SANITIZER=memory [..]
-$ ninja
+$ cmake --build .
 ```

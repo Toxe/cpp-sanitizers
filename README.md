@@ -20,6 +20,13 @@ $ cmake -DUSE_CLANG_TIDY=ON [..]
 $ ninja
 ```
 
+If `clang-tidy` is installed under a different name pass that name or the full path with the `CMAKE_CXX_CLANG_TIDY` option like:
+
+```
+$ cmake -DUSE_CLANG_TIDY=ON -DCMAKE_CXX_CLANG_TIDY=/opt/local/bin/clang-tidy-11 [..]
+$ ninja
+```
+
 ## Sanitizers
 
 To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake. Possible values:

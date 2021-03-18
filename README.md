@@ -44,10 +44,21 @@ Make sure to set `-DCMAKE_BUILD_TYPE=` to either `Debug` or `RelWithDebInfo` to 
 
 Builds the project targets with `-fsanitize=address -fno-omit-frame-pointer`.
 
+This automatically enables LeakSanitizer on Linux. To enable it on macOS pass the `ASAN_OPTIONS=detect_leaks=true` flag when running a program.
+
 ```
 $ cmake -DUSE_SANITIZER=address [..]
 $ cmake --build .
 ```
+
+Some checks are only activated after passing a [run-time flag](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#run-time-flags):
+
+- **`asan_initialization-order-fiasco`**: Run with either:  
+  `ASAN_OPTIONS=check_initialization_order=true`  
+  `ASAN_OPTIONS=check_initialization_order=true:strict_init_order=true`
+- **`asan_memory-leak_malloc`**  
+  **`asan_memory-leak_new`**: Need to run with `ASAN_OPTIONS=detect_leaks=true` on macOS.
+- **`asan_stack-use-after-return`**: Need to run with `ASAN_OPTIONS=detect_stack_use_after_return=true`.
 
 ### Leak Sanitizer (`USE_SANITIZER=leak`)
 

@@ -2,6 +2,6 @@ int values[10];
 
 int main(int argc, char* argv[])
 {
-    values[9] = 10;
-    values[10 + argc] = 11; // buffer overflow
+    values[0] = 0;
+    return values[10 + argc]; // buffer overflow
 }

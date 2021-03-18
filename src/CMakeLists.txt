@@ -40,8 +40,11 @@ foreach(target ${ALL_TARGETS})
     target_link_libraries(${target} PRIVATE ${SANITIZER_FLAGS})
 
     # disable some (useful) warnings that, in this case, are a bit annoying for example programs
-    target_compile_options(${target} PRIVATE -Wno-unused-parameter)
-    target_compile_options(${target} PRIVATE -Wno-unused-variable)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        target_compile_options(${target} PRIVATE -Wno-unused-parameter -Wno-unused-variable -Wno-array-bounds -Wno-return-stack-address)
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        target_compile_options(${target} PRIVATE -Wno-unused-parameter -Wno-unused-variable -Wno-array-bounds -Wno-return-stack-address -Wno-unused-but-set-variable -Wno-return-local-addr)
+    endif()
 endforeach()
 
 target_link_libraries(tsan_data-race PRIVATE Threads::Threads)

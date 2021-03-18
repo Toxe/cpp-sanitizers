@@ -1,6 +1,6 @@
-int main()
+int main(int argc, char* argv[])
 {
     int* values = new int[10];
     delete[] values;
-    return values[3]; // use after free
+    return values[argc]; // use after free
 }

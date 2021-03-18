@@ -1,6 +1,6 @@
 int main()
 {
-    int* p;
+    volatile int* p;
 
     {
         int i = 0;

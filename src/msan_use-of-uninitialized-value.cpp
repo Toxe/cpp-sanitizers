@@ -1,5 +1,6 @@
-int main()
+int main(int argc, char* argv[])
 {
     int* values = new int[10];
-    return values[3];
+    values[0] = 0;
+    return values[argc];
 }

@@ -1,11 +1,12 @@
 // on macOS need to run with ASAN_OPTIONS=detect_leaks=true
 
 #include <cstdlib>
-#include <iostream>
 
-int main()
+int main(int argc, char* argv[])
 {
     int* values = static_cast<int*>(malloc(10 * sizeof(int)));
-    std::cout << "values[0] = " << values[0] << '\n';
+    values[1] = 0;
+    int ret = values[argc];
     // free(values);
+    return ret;
 }

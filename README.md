@@ -2,6 +2,8 @@
 
 ## How to build
 
+Build with debug infos, either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug`.
+
 ```
 $ mkdir build
 $ cd build
@@ -40,7 +42,7 @@ To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake. Possible values
 
 Make sure to set `-DCMAKE_BUILD_TYPE=` to either `Debug` or `RelWithDebInfo` to include debug symbols or set `-g` compiler flag manually.
 
-### Address Sanitizer (`USE_SANITIZER=address`)
+### AddressSanitizer (`USE_SANITIZER=address`)
 
 Builds the project targets with `-fsanitize=address -fno-omit-frame-pointer`.
 
@@ -60,16 +62,20 @@ Some checks are only activated after passing a [run-time flag](https://github.co
   **`asan_memory-leak_new`**: Need to run with `ASAN_OPTIONS=detect_leaks=true` on macOS.
 - **`asan_stack-use-after-return`**: Need to run with `ASAN_OPTIONS=detect_stack_use_after_return=true`.
 
-### Leak Sanitizer (`USE_SANITIZER=leak`)
+### LeakSanitizer (`USE_SANITIZER=leak`)
 
 Builds the project targets with `-fsanitize=leak`.
+
+LeakSanitizer is automatically included in AddressSanitizer. This just uses the stand-alone version without the AddressSanitizer overhead.
+
+To use it on macOS run the programs with the `ASAN_OPTIONS=detect_leaks=true` flag.
 
 ```
 $ cmake -DUSE_SANITIZER=leak [..]
 $ cmake --build .
 ```
 
-### Thread Sanitizer (`USE_SANITIZER=thread`)
+### ThreadSanitizer (`USE_SANITIZER=thread`)
 
 Builds the project targets with `-fsanitize=thread`.
 
@@ -78,7 +84,7 @@ $ cmake -DUSE_SANITIZER=thread [..]
 $ cmake --build .
 ```
 
-### Undefined Behavior Sanitizer (`USE_SANITIZER=undefined`)
+### UndefinedBehaviorSanitizer  (`USE_SANITIZER=undefined`)
 
 Builds the project targets with `-fsanitize=undefined`.
 
@@ -87,7 +93,7 @@ $ cmake -DUSE_SANITIZER=undefined [..]
 $ cmake --build .
 ```
 
-### Memory Sanitizer (`USE_SANITIZER=memory`)
+### MemorySanitizer (`USE_SANITIZER=memory`)
 
 Builds the project targets with `-fsanitize=memory -fsanitize-memory-track-origins -fno-omit-frame-pointer -fPIE -pie`.
 

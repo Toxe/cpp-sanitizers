@@ -1,7 +1,12 @@
+// on macOS need to run with ASAN_OPTIONS=detect_leaks=true
+
 #include <cstdlib>
 
-int main()
+int main(int argc, char* argv[])
 {
-    auto values = malloc(10 * sizeof(int));
+    int* values = static_cast<int*>(malloc(10 * sizeof(int)));
+    values[1] = 0;
+    int ret = values[argc];
     // free(values);
+    return ret;
 }

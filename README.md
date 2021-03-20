@@ -40,9 +40,11 @@ To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake. Possible values
 - `memory`
 - `OFF` (default)
 
-Make sure to set `-DCMAKE_BUILD_TYPE=` to either `Debug` or `RelWithDebInfo` to include debug symbols or set `-g` compiler flag manually.
+Make sure to build with eiter either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug` or to set `-g` compiler flag manually.
 
 ### AddressSanitizer (`USE_SANITIZER=address`)
+
+https://github.com/google/sanitizers/wiki/AddressSanitizer
 
 Builds the project targets with `-fsanitize=address -fno-omit-frame-pointer`.
 
@@ -64,6 +66,8 @@ Some checks are only activated after passing a [run-time flag](https://github.co
 
 ### LeakSanitizer (`USE_SANITIZER=leak`)
 
+https://github.com/google/sanitizers/wiki/AddressSanitizerLeakSanitizer
+
 Builds the project targets with `-fsanitize=leak`.
 
 LeakSanitizer is automatically included in AddressSanitizer. This just uses the stand-alone version without the AddressSanitizer overhead.
@@ -77,6 +81,8 @@ $ cmake --build .
 
 ### ThreadSanitizer (`USE_SANITIZER=thread`)
 
+https://github.com/google/sanitizers/wiki/ThreadSanitizerCppManual
+
 Builds the project targets with `-fsanitize=thread`.
 
 ```
@@ -86,7 +92,11 @@ $ cmake --build .
 
 ### UndefinedBehaviorSanitizer  (`USE_SANITIZER=undefined`)
 
-Builds the project targets with `-fsanitize=undefined`.
+https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
+
+Builds the project targets with `-fsanitize=undefined -fno-omit-frame-pointer`.
+
+Run the programs with the flag `UBSAN_OPTIONS=print_stacktrace=true` to generate stack traces.
 
 ```
 $ cmake -DUSE_SANITIZER=undefined [..]
@@ -94,6 +104,8 @@ $ cmake --build .
 ```
 
 ### MemorySanitizer (`USE_SANITIZER=memory`)
+
+https://github.com/google/sanitizers/wiki/MemorySanitizer
 
 Builds the project targets with `-fsanitize=memory -fsanitize-memory-track-origins -fno-omit-frame-pointer -fPIE -pie`.
 

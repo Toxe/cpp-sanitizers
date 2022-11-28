@@ -1,6 +1,6 @@
 // need to run with:
-// - ASAN_OPTIONS=check_initialization_order=true
-// - ASAN_OPTIONS=check_initialization_order=true:strict_init_order=true
+// - ASAN_OPTIONS=check_initialization_order=1
+// - ASAN_OPTIONS=check_initialization_order=1:strict_init_order=1
 
 extern int global;
 

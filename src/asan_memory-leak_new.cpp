@@ -1,4 +1,4 @@
-// on macOS need to run with ASAN_OPTIONS=detect_leaks=true
+// on macOS need to run with ASAN_OPTIONS=detect_leaks=1
 
 int main(int argc, char* argv[])
 {

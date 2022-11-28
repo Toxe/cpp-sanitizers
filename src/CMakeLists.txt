@@ -37,7 +37,7 @@ foreach(target ${ALL_TARGETS})
     set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)
     target_compile_features(${target} PUBLIC cxx_std_20)
     target_compile_options(${target} PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS} ${DEFAULT_COMPILER_WARNINGS})
-    target_link_libraries(${target} PRIVATE ${SANITIZER_FLAGS})
+    target_link_options(${target} PRIVATE ${SANITIZER_FLAGS})
 
     # disable some (useful) warnings that, in this case, are a bit annoying for example programs
     if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")

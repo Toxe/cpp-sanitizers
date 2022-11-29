@@ -45,6 +45,8 @@ foreach(target ${ALL_TARGETS})
         target_compile_options(${target} PRIVATE -Wno-unused-parameter -Wno-unused-variable -Wno-array-bounds -Wno-uninitialized -Wno-return-stack-address)
     elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         target_compile_options(${target} PRIVATE -Wno-unused-parameter -Wno-unused-variable -Wno-array-bounds -Wno-uninitialized -Wno-unused-but-set-variable -Wno-return-local-addr)
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        target_compile_options(${target} PRIVATE /wd4100)
     endif()
 endforeach()
 

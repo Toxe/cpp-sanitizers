@@ -50,13 +50,14 @@ To use sanitizers pass the `USE_SANITIZER=[..]` option to CMake with one or more
 - `thread` or `TSAN`
 - `undefined` or `UBSAN`
 
-Make sure to build with eiter either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug` or to set `-g` compiler flag manually.
+**Note:** Make sure to build with either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug` or to set `-g` compiler flag manually.
 
-#### MSVC
+#### MSVC and Clang-cl
 
 - `address` or `ASAN`
 
-Make sure to build with eiter either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug` or to set `/Zi` compiler flag manually.
+**Note:** For MSVC make sure to build with either `-DCMAKE_BUILD_TYPE=RelWithDebInfo` or `-DCMAKE_BUILD_TYPE=Debug` or to set `/Zi` compiler flag manually.
+Clang-cl does not (yet) support linking with `/MDd`, so use `RelWithDebInfo` instead of `Debug`.
 
 ### AddressSanitizer (`USE_SANITIZER=address` or `=ASAN`)
 
